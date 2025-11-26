@@ -61,7 +61,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of("*")); 
         
         // Libera os métodos HTTP
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PATCH","PUT", "DELETE", "OPTIONS"));
         
         // Libera qualquer cabeçalho (Tokens, Content-Type, etc)
         configuration.setAllowedHeaders(List.of("*"));
