@@ -32,26 +32,26 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = this.recoverToken(request);
         
-        // Se tiver um token válido...
+       
         if (token != null) {
-            var login = tokenService.extractUsername(token); // Valida e pega o user
+            var login = tokenService.extractUsername(token); 
             User user = userRepository.findByUsername(login).orElseThrow(() -> new RuntimeException("User Not Found"));
 
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
             var authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
             
-            // ...salva no contexto do Spring que o usuário está logado!
+           
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         
-        // Segue o fluxo (vai para o Controller)
+        
         filterChain.doFilter(request, response);
     }
 
     private String recoverToken(HttpServletRequest request) {
         var authHeader = request.getHeader("Authorization");
         if (authHeader == null) return null;
-        // Remove a palavra "Bearer " e retorna só o código
+        
         return authHeader.replace("Bearer ", "");
     }
 }

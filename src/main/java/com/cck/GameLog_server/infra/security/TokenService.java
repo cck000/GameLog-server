@@ -18,23 +18,22 @@ import java.util.function.Function;
 @Service
 public class TokenService {
 
-    // Adicione esta linha no seu application.properties:
-    // jwt.secret=UmaChaveMuitoLongaESecretaParaGarantirASegurancaDoSeuProjeto123456
+    
     @Value("${jwt.secret}")
     private String secretKey;
 
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        // Você pode adicionar informações extras no token se quiser (ex: email)
+        
         return createToken(claims, user.getUsername());
     }
 
     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject) // O "dono" do token (username)
+                .setSubject(subject) 
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 horas de validade
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) 
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

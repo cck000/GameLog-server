@@ -15,12 +15,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter; // IMPORTANTE
-import org.springframework.web.cors.CorsConfiguration; // IMPORTANTE
-import org.springframework.web.cors.CorsConfigurationSource; // IMPORTANTE
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter; 
+import org.springframework.web.cors.CorsConfiguration; 
+import org.springframework.web.cors.CorsConfigurationSource; 
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.cck.GameLog_server.infra.security.SecurityFilter; // IMPORTANTE
+import com.cck.GameLog_server.infra.security.SecurityFilter; 
 
 @Configuration
 @EnableWebSecurity
@@ -37,12 +37,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // ADICIONEI ESTA LINHA AQUI EMBAIXO:
+           
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) 
             .csrf(AbstractHttpConfigurer::disable) 
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll() 
-                .requestMatchers("/auth/**").permitAll() // Adicionei essa garantia caso sua rota não tenha /api
+                .requestMatchers("/auth/**").permitAll() 
                 .anyRequest().authenticated() 
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -52,18 +52,18 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ADICIONEI ESTE BEAN INTEIRO PARA CONFIGURAR O CORS
+    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        // Libera para qualquer origem (Vercel, Localhost, etc)
+       
         configuration.setAllowedOrigins(List.of("*")); 
         
-        // Libera os métodos HTTP
+       
         configuration.setAllowedMethods(List.of("GET", "POST", "PATCH","PUT", "DELETE", "OPTIONS"));
         
-        // Libera qualquer cabeçalho (Tokens, Content-Type, etc)
+        
         configuration.setAllowedHeaders(List.of("*"));
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
