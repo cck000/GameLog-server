@@ -13,8 +13,8 @@ O GameLog Server fornece autenticação segura via JWT e integra-se com a **RAWG
 
 ##  Tecnologias Utilizadas
 
-- **Java 21
-- **Spring Boot 3.5.6 (Web, Data JPA, Security)
+- **Java 21**
+- **Spring Boot 3.5.6** (Web, Data JPA, Security)
 - **PostgreSQL** (Banco de dados relacional)
 - **JSON Web Token (JWT)** (Autenticação)
 - **Lombok** (Redução de boilerplate)
