@@ -10,4 +10,4 @@ public interface IUserService {
     
     List<UserDTO> getAllUsers();
     
-  
+}
