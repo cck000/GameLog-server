@@ -11,16 +11,16 @@ O GameLog Server fornece autenticação segura via JWT e integra-se com a **RAWG
 - **Gerenciamento de Biblioteca:** Adicionar, remover e atualizar o status dos jogos na biblioteca pessoal (ex: *Quero Jogar, Jogando, Zerado, Abandonado*).
 - **Prevenção de Duplicidade:** Validação para evitar que o mesmo jogo seja adicionado duas vezes pelo mesmo usuário.
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
-- **Java 17+**
-- **Spring Boot 3** (Web, Data JPA, Security)
+- **Java 21
+- **Spring Boot 3.5.6 (Web, Data JPA, Security)
 - **PostgreSQL** (Banco de dados relacional)
 - **JSON Web Token (JWT)** (Autenticação)
 - **Lombok** (Redução de boilerplate)
 - **Maven** (Gerenciamento de dependências)
 
-## ⚙️ Variáveis de Ambiente
+##  Variáveis de Ambiente
 
 Para rodar o projeto localmente ou em produção, você precisará configurar as seguintes variáveis de ambiente no seu sistema ou no arquivo `application.properties`:
 
